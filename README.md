@@ -48,24 +48,25 @@
 
 3. Access the application at `http://localhost:5000`
 
-## Render.com Deployment Instructions
+## Koyeb.com Deployment Instructions (Buildpacks)
 
-1. **Create a new Web Service** on Render:
+1. **Create a new Web Service** on Koyeb:
    - Connect your GitHub/GitLab repository
-   - Select "Python 3" as the environment
-   - Use the following settings:
-     - Build Command: `pip install -r requirements.txt`
-     - Start Command: `gunicorn --bind 0.0.0.0:$PORT app:create_app()`
-     - Environment: Python 3.9+
+   - Select "Python" as the runtime
+   - Use Buildpacks (automatic detection)
 
 2. **Configure Environment Variables**:
-   - `DATABASE_URL`: Your PostgreSQL connection string
-   - `SECRET_KEY`: A random secret key for Flask
-   - `JWT_SECRET_KEY`: A random secret key for JWT
+   - `DATABASE_URL`: `postgres://voting-adm:npg_LtCUIiyv3GT4@ep-black-hall-a2bwuds6.eu-central-1.pg.koyeb.app/koyebdb`
+   - `SECRET_KEY`: Generate a random secret key for Flask
+   - `JWT_SECRET_KEY`: Generate a random secret key for JWT
    - `FLASK_ENV`: Set to "production"
 
-3. **Database Setup**:
-   - Create a PostgreSQL instance on Render
+3. **Application Settings**:
+   - Build Command: `pip install -r requirements.txt`
+   - Run Command: `gunicorn --bind 0.0.0.0:$PORT app:create_app()`
+
+4. **Database Setup**:
+   - The database is already configured with the provided URL
    - Run migrations on first deploy:
      ```bash
      flask db upgrade
@@ -75,13 +76,13 @@
      python seeds.py
      ```
 
-4. **After Deployment**:
-   - Access your app at the provided Render URL
+5. **After Deployment**:
+   - Access your app at the provided Koyeb URL
    - Login with admin credentials:
      - Username: `admin`
      - Password: `admin123`
 
 Note: The application is pre-configured with:
-- Proper Procfile for Render
 - PostgreSQL database support
-- Environment variable templates
+- Proper gunicorn configuration
+- Environment variable handling
