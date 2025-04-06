@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatísticas - Sistema de Votação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-800">Estatísticas de Votação</h1>
+            <p class="text-gray-600 mt-2">Análise detalhada dos resultados</p>
+        </header>
+
+        <main class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+            <!-- Summary Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div class="bg-blue-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-blue-800">Total de Votos</h3>
+                    <p id="totalVotes" class="text-2xl font-bold">0</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-green-800">Mesas Ativas</h3>
+                    <p id="activeStations" class="text-2xl font-bold">0</p>
+                </div>
+                <div class="bg-purple-50 p-4 rounded-lg">
+                    <h3 class="font-semibold text-purple-800">Média por Mesa</h3>
+                    <p id="avgPerStation" class="text-2xl font-bold">0</p>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h2 class="text-xl font-semibold mb-4">Votos por Mesa</h2>
+                    <canvas id="stationChart" class="w-full h-64"></canvas>
+                </div>
+                <div>
+                    <h2 class="text-xl font-semibold mb-4">Votos por Horário</h2>
+                    <canvas id="timeChart" class="w-full h-64"></canvas>
+                </div>
+            </div>
+
+            <!-- Detailed Table -->
+            <div class="mt-8">
+                <h2 class="text-xl font-semibold mb-4">Detalhes por Mesa</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="py-2 px-4 border">Mesa</th>
+                                <th class="py-2 px-4 border">Votos</th>
+                                <th class="py-2 px-4 border">Última Atualização</th>
+                            </tr>
+                        </thead>
+                        <tbody id="stationDetails">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="stats.js"></script>
+</body>
+</html>
