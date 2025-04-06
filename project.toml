@@ -1,0 +1,10 @@
+[build]
+requires = ["python"]
+
+[[build.env]]
+name = "BP_PYTHON_VERSION"
+value = "3.9"
+
+[[build.env]]
+name = "BP_PYTHON_DEFAULT_PROCESS" 
+value = "web"
