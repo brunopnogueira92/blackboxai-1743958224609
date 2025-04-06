@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema de Votação</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-800">Dashboard</h1>
+            <p class="text-gray-600 mt-2">Estatísticas e Histórico de Votos</p>
+        </header>
+
+        <main class="max-w-md mx-auto bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold mb-4">Estatísticas de Votação</h2>
+            <div id="stats" class="mb-4">
+                <!-- Statistics will be populated by JavaScript -->
+            </div>
+
+            <h2 class="text-xl font-semibold mb-4">Histórico de Votos</h2>
+            <ul id="voteHistory" class="space-y-2">
+                <!-- Vote history will be populated by JavaScript -->
+            </ul>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
