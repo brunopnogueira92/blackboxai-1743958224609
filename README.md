@@ -48,6 +48,40 @@
 
 3. Access the application at `http://localhost:5000`
 
-## Deployment
-- For Render deployment (non-Docker), use the configured Procfile
-- Ensure to configure the environment variables as needed
+## Render.com Deployment Instructions
+
+1. **Create a new Web Service** on Render:
+   - Connect your GitHub/GitLab repository
+   - Select "Python 3" as the environment
+   - Use the following settings:
+     - Build Command: `pip install -r requirements.txt`
+     - Start Command: `gunicorn --bind 0.0.0.0:$PORT app:create_app()`
+     - Environment: Python 3.9+
+
+2. **Configure Environment Variables**:
+   - `DATABASE_URL`: Your PostgreSQL connection string
+   - `SECRET_KEY`: A random secret key for Flask
+   - `JWT_SECRET_KEY`: A random secret key for JWT
+   - `FLASK_ENV`: Set to "production"
+
+3. **Database Setup**:
+   - Create a PostgreSQL instance on Render
+   - Run migrations on first deploy:
+     ```bash
+     flask db upgrade
+     ```
+   - Seed initial data (optional):
+     ```bash
+     python seeds.py
+     ```
+
+4. **After Deployment**:
+   - Access your app at the provided Render URL
+   - Login with admin credentials:
+     - Username: `admin`
+     - Password: `admin123`
+
+Note: The application is pre-configured with:
+- Proper Procfile for Render
+- PostgreSQL database support
+- Environment variable templates
